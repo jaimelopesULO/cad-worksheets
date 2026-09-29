@@ -1,24 +1,50 @@
-<html>
-	<head>
-		<title>Home Sweet Home</title>
-	</head>
-	
-	<body>
-		<h1>Kitchen</h1>
-		<p>Temperature 21.6 °C 5 minutes ago<br/>
-		Lights Off 10 minutes ago<br/>
-		West Window Open 15 minutes ago<br/>
-		North Window Open 15 minutes ago</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            width: fit-content;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home Sweet Home</h1>
 
-		<h1>Living Room</h1>
-		<p>Temperature 22.6 °C 5 minutes ago<br/>
-		Ceiling Lights Off 7 minutes ago<br/>
-		Ambient Lights On 7 minutes ago<br/>
-		Ambient Music On 17 minutes ago</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="history.html">History</a></li>
+        </ul>
+    </nav>
 
-		<h1>Clock</h1>
-		<p>Time 22:30<br/>
-		Date 2018-09-18<br/>
-		Sunrise / Sunset above horizon</p>
-	</body>
+    <h2>Kitchen</h2>
+    <p>
+        <i class="fa-solid fa-temperature-half fa-fw"></i> Temperature 21.6 &deg;C 5 minutes ago<br>
+        <i class="fa-regular fa-lightbulb fa-fw"></i> Lights Off 10 minutes ago<br>
+        <i class="fa-solid fa-eye fa-fw"></i> West Window Open 15 minutes ago<br>
+        <i class="fa-solid fa-eye fa-fw"></i> North Window Open 15 minutes ago
+    </p>
+
+    <h2>Living Room</h2>
+    <p>
+        <i class="fa-solid fa-temperature-half fa-fw"></i> Temperature 22.6 &deg;C 5 minutes ago<br>
+        <i class="fa-regular fa-lightbulb fa-fw"></i> Ceiling Lights Off 7 minutes ago<br>
+        <i class="fa-solid fa-lightbulb fa-fw"></i> Ambient Lights On 7 minutes ago<br>
+        <i class="fa-solid fa-music fa-fw"></i> Ambient Music On 17 minutes ago
+    </p>
+
+    <h2>Clock</h2>
+    <p>
+        <i class="fa-regular fa-clock fa-fw"></i> Time 22:30<br>
+        <i class="fa-regular fa-calendar-days fa-fw"></i> Date 2018-09-18<br>
+        <i class="fa-solid fa-sun fa-fw"></i> Sunrise / Sunset above horizon
+    </p>
+</body>
 </html>
