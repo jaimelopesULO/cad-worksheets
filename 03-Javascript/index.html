@@ -31,8 +31,13 @@
                 <div class="card h-100">
                     <div class="card-header"><h2 class="h5 mb-0">Kitchen</h2></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fa-solid fa-temperature-half fa-fw"></i> Temperature 21.6 &deg;C <small class="text-muted">5 minutes ago</small></li>
-                        <li class="list-group-item"><i class="fa-regular fa-lightbulb fa-fw"></i> Lights Off <small class="text-muted">10 minutes ago</small></li>
+                        <li class="list-group-item"><i class="fa-solid fa-temperature-half fa-fw"></i> Temperature <span id="kitchenTemperature">21.6</span> &deg;C <small class="text-muted">5 minutes ago</small></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i id="kitchenLightsIcon" class="fa-regular fa-lightbulb fa-fw"></i> Lights <small class="text-muted">10 minutes ago</small></span>
+                            <span class="form-check form-switch m-0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="kitchenLightsToggle" value="off" aria-label="Kitchen lights">
+                            </span>
+                        </li>
                         <li class="list-group-item"><i class="fa-solid fa-eye fa-fw"></i> West Window Open <small class="text-muted">15 minutes ago</small></li>
                         <li class="list-group-item"><i class="fa-solid fa-eye fa-fw"></i> North Window Open <small class="text-muted">15 minutes ago</small></li>
                     </ul>
@@ -43,10 +48,25 @@
                 <div class="card h-100">
                     <div class="card-header"><h2 class="h5 mb-0">Living Room</h2></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fa-solid fa-temperature-half fa-fw"></i> Temperature 22.6 &deg;C <small class="text-muted">5 minutes ago</small></li>
-                        <li class="list-group-item"><i class="fa-regular fa-lightbulb fa-fw"></i> Ceiling Lights Off <small class="text-muted">7 minutes ago</small></li>
-                        <li class="list-group-item"><i class="fa-solid fa-lightbulb fa-fw"></i> Ambient Lights On <small class="text-muted">7 minutes ago</small></li>
-                        <li class="list-group-item"><i class="fa-solid fa-music fa-fw"></i> Ambient Music On <small class="text-muted">17 minutes ago</small></li>
+                        <li class="list-group-item"><i class="fa-solid fa-temperature-half fa-fw"></i> Temperature <span id="livingRoomTemperature">22.6</span> &deg;C <small class="text-muted">5 minutes ago</small></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i id="ceilingLightsIcon" class="fa-regular fa-lightbulb fa-fw"></i> Ceiling Lights <small class="text-muted">7 minutes ago</small></span>
+                            <span class="form-check form-switch m-0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ceilingLightsToggle" value="off" aria-label="Ceiling lights">
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i id="ambientLightsIcon" class="fa-solid fa-lightbulb fa-fw"></i> Ambient Lights <small class="text-muted">7 minutes ago</small></span>
+                            <span class="form-check form-switch m-0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ambientLightsToggle" value="on" aria-label="Ambient lights" checked>
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i id="ambientMusicIcon" class="fa-solid fa-music fa-fw"></i> Ambient Music <small class="text-muted">17 minutes ago</small></span>
+                            <span class="form-check form-switch m-0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ambientMusicToggle" value="on" aria-label="Ambient music" checked>
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -55,8 +75,8 @@
                 <div class="card h-100">
                     <div class="card-header"><h2 class="h5 mb-0">Clock</h2></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fa-regular fa-clock fa-fw"></i> Time 22:30</li>
-                        <li class="list-group-item"><i class="fa-regular fa-calendar-days fa-fw"></i> Date 2018-09-18</li>
+                        <li class="list-group-item"><i class="fa-regular fa-clock fa-fw"></i> Time <span id="clockTime">22:30</span></li>
+                        <li class="list-group-item"><i class="fa-regular fa-calendar-days fa-fw"></i> Date <span id="clockDate">2018-09-18</span></li>
                         <li class="list-group-item"><i class="fa-solid fa-sun fa-fw"></i> Sunrise / Sunset above horizon</li>
                     </ul>
                 </div>
