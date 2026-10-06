@@ -49,6 +49,69 @@ var app = (function () {
         $('#clockTime').text(twoDigits(now.getHours()) + ':' + twoDigits(now.getMinutes()) + ':' + twoDigits(now.getSeconds()));
     }
 
+    
+    // 2 b) Tempo: dados da API do OpenWeatherMap
+    var API_KEY = '068a49de1d819b518a7314a974acca8e';
+
+    // Converte segundos Unix (formato da API) numa hora HH:MM
+    function unixToTime(seconds) {
+        var date = new Date(seconds * 1000);
+        return twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes());
+    }
+
+    // 2 c) Momento em que os dados do tempo foram obtidos (null = ainda não há dados)
+    var lastWeatherUpdate = null;
+
+    // Mostra há quanto tempo os dados foram obtidos: segundos, minutos ou horas
+    function updateLastUpdate() {
+        if (lastWeatherUpdate === null) {
+            return; // ainda não há dados: não faz nada
+        }
+
+        var seconds = Math.floor((new Date() - lastWeatherUpdate) / 1000);
+        var text;
+
+        if (seconds < 60) {
+            text = seconds + ' seconds ago';
+        } else if (seconds < 3600) {
+            text = Math.floor(seconds / 60) + ' minutes ago';
+        } else {
+            text = Math.floor(seconds / 3600) + ' hours ago';
+        }
+
+        $('#weatherLastUpdate').text(text);
+    }
+
+    // Escreve os dados recebidos da API no painel Weather
+    function showWeather(data) {
+        $('#weatherTemperature').text(data.main.temp);
+        $('#weatherTemperatureMax').text(data.main.temp_max);
+        $('#weatherTemperatureMin').text(data.main.temp_min);
+        $('#weatherHumidity').text(data.main.humidity);
+        $('#weatherSunrise').text(unixToTime(data.sys.sunrise));
+        $('#weatherSunset').text(unixToTime(data.sys.sunset));
+
+        lastWeatherUpdate = new Date(); // c) guarda o momento em que os dados chegaram
+        updateLastUpdate();             // c) mostra logo "0 seconds ago"
+    }
+
+    // Pede os dados do tempo à API para a cidade escrita na caixa
+    function getWeather() {
+        var city = $('#weatherCity').val();
+        var url = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=' +
+                  encodeURIComponent(city) + '&appid=' + API_KEY;
+
+        $.getJSON(url)
+            .done(function (data) {
+                showWeather(data);
+            })
+            .fail(function (jqXHR) {
+                lastWeatherUpdate = null; // c) sem dados válidos, pára a contagem
+                console.log('Erro ao obter o tempo: ' + jqXHR.status);
+                $('#weatherLastUpdate').text('Erro ' + jqXHR.status);
+            });
+    }
+
     // Só corre quando a página (HTML) estiver toda carregada
     $(function () {
 
@@ -79,6 +142,15 @@ var app = (function () {
         updateDate();
         updateTime();
         setInterval(updateTime, 1000);
+
+    
+        // 2 b) Tempo: carrega ao abrir a página e quando se clica em "Get"
+        getWeather();
+        $('#weatherButton').on('click', getWeather);
+
+        // 2 c) Atualiza o "Last Update" a cada segundo
+        setInterval(updateLastUpdate, 1000);
+
     });
 
 })();
